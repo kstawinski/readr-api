@@ -8,7 +8,7 @@ exports.getBooks = async (request, reply) => {
     let bookID = doc.id;
     let bookData = doc.data();
 
-    books.push({ bookID, ...bookData })
+    books.push({ id: bookID, ...bookData })
   });
 
   return reply.response(books).code(201);
