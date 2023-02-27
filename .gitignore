@@ -1,3 +1,6 @@
+# Firebase key
+utils/firebase-key.json
+
 # Logs
 logs
 *.log
