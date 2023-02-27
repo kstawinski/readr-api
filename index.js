@@ -8,7 +8,12 @@ const { db } = require('./utils/admin.js');
 const init = async () => {
   const server = Hapi.server({
     port: process.env.RENDER_PORT || 3030,
-    host: process.env.RENDER_HOST || 'localhost'
+    host: process.env.RENDER_HOST || 'localhost',
+    routes: {
+      cors: {
+        origin: ['*']          
+      }
+    }
   });
 
   server.route({
