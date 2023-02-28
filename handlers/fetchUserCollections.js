@@ -12,5 +12,5 @@ exports.fetchUserCollections = async (request, reply) => {
     collections.push({ id: collectionID, ...collectionData })
   });
 
-  return reply.response(collections).code(201);
+  return reply.response(collections).code(200);
 };

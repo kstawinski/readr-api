@@ -12,5 +12,5 @@ exports.fetchUserBooks = async (request, reply) => {
     books.push({ id: bookID, ...bookData })
   });
 
-  return reply.response(books).code(201);
+  return reply.response(books).code(200);
 };
