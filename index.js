@@ -2,7 +2,8 @@
 const Hapi = require('@hapi/hapi');
 
 // Handlers
-const { getBooks } = require('./handlers/getBooks')
+const { getBooks } = require('./handlers/getBooks');
+const { getCollections } = require('./handlers/getCollections');
 const { db } = require('./utils/admin.js');
 
 const init = async () => {
@@ -16,10 +17,18 @@ const init = async () => {
     }
   });
 
+  // Fetch books by user ID
   server.route({
     method: 'GET',
     path: '/books/{uid}',
     handler: getBooks
+  });
+
+  // Fetch collections by user ID
+  server.route({
+    method: 'GET',
+    path: '/collections/{uid}',
+    handler: getCollections
   });
 
   server.route({
