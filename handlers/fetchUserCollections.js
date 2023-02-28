@@ -1,7 +1,7 @@
 const { db } = require('../utils/admin.js');
 
 exports.fetchUserCollections = async (request, reply) => {
-  const { uid } = request.payload;
+  const { uid } = request.params;
   const snapshot = await db.collection('collections').where('uid', '==', uid).get();
 
   let collections = [];
