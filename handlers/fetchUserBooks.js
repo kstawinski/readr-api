@@ -1,7 +1,8 @@
 const { db } = require('../utils/admin.js');
 
-exports.getBooks = async (request, reply) => {
-  const snapshot = await db.collection('books').where('uid', '==', request.params.uid).get();
+exports.fetchUserBooks = async (request, reply) => {
+  const { uid } = request.params;
+  const snapshot = await db.collection('books').where('uid', '==', uid).get();
 
   let books = [];
   snapshot.forEach((doc) => {

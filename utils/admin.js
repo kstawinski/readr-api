@@ -18,7 +18,5 @@ admin.initializeApp({
   }),
 });
 
-console.log(envParse(process.env.FIREBASE_PRIVATE_KEY_ID));
-
 const db = admin.firestore();
 module.exports = { admin, db };

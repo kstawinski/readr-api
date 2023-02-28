@@ -2,8 +2,9 @@
 const Hapi = require('@hapi/hapi');
 
 // Handlers
-const { getBooks } = require('./handlers/getBooks');
-const { getCollections } = require('./handlers/getCollections');
+const { fetchUserBooks } = require('./handlers/fetchUserBooks');
+const { fetchUserCollections } = require('./handlers/fetchUserCollections');
+const { createNewCollection } = require('./handlers/createNewCollection');
 
 const init = async () => {
   const server = Hapi.server({
@@ -20,14 +21,21 @@ const init = async () => {
   server.route({
     method: 'GET',
     path: '/books/{uid}',
-    handler: getBooks
+    handler: fetchUserBooks
   });
 
   // Fetch collections by user ID
   server.route({
     method: 'GET',
     path: '/collections/{uid}',
-    handler: getCollections
+    handler: fetchUserCollections
+  });
+
+  // Add new collection
+  server.route({
+    method: 'POST',
+    path: '/collections/{uid}',
+    handler: createNewCollection
   });
 
   server.route({
