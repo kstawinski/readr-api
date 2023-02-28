@@ -4,7 +4,6 @@ const Hapi = require('@hapi/hapi');
 // Handlers
 const { getBooks } = require('./handlers/getBooks');
 const { getCollections } = require('./handlers/getCollections');
-const { db } = require('./utils/admin.js');
 
 const init = async () => {
   const server = Hapi.server({
