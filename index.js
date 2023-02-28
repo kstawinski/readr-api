@@ -5,6 +5,7 @@ const Hapi = require('@hapi/hapi');
 const { fetchUserBooks } = require('./handlers/fetchUserBooks');
 const { fetchUserCollections } = require('./handlers/fetchUserCollections');
 const { createNewCollection } = require('./handlers/createNewCollection');
+const { deleteCollection } = require('./handlers/deleteCollection');
 
 const init = async () => {
   const server = Hapi.server({
@@ -36,6 +37,13 @@ const init = async () => {
     method: 'POST',
     path: '/collections/{uid}',
     handler: createNewCollection
+  });
+
+  // Remove collection
+  server.route({
+    method: 'DELETE',
+    path: '/collections/{uid}/{collection_id}',
+    handler: deleteCollection
   });
 
   server.route({
